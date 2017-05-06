@@ -7,6 +7,8 @@
  */
 class MY_controller extends CI_Controller
 {
+    // bien gui du lieu sang ben view
+    public $data = array();
     function __construct()
     {
         //Ke_thua_tu_CI_Controller
@@ -17,8 +19,6 @@ class MY_controller extends CI_Controller
             case 'admin':
             {
                 $this->_check_login();
-                //xử lý các dữ liệu khi truy cập vào trang admin
-                echo 'bạn đang truy cập vào hệ thống quản lý';
                 break;
             }
             default:
@@ -32,6 +32,6 @@ class MY_controller extends CI_Controller
      */
     private function _check_login()
     {
-        echo 'abc';
+
     }
 }

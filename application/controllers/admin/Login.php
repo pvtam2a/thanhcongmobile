@@ -9,6 +9,6 @@ class Login extends MY_controller
 {
     function index()
     {
-        echo "login";
+        $this->load->view('admin/login/index');
     }
 }
