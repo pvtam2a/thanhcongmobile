@@ -5,22 +5,30 @@
  * Date: 5/7/2017
  * Time: 1:49 AM
  */
-class Admin extends CI_Controller
+class Admin extends MY_controller
 {
-    function create()
+    function __construct()
     {
+        parent::__construct();
         $this->load->model('admin_model');
-        $data = array();
-        $data['username'] = 'user1';
-        $data['password'] = 'user1';
-        $data['name'] = 'tampv';
-        if ($this->admin_model->create($data))
-        {
-            echo 'Thêm thành công!';
-        }
-        else
-        {
-            echo 'Thêm thất bại';
-        }
+    }
+    /*
+     * lay danh sach admin
+     */
+    function index()
+    {
+        $input = array();
+        $list = $this->admin_model->get_list($input);
+        $this->data['list'] = $list;
+        $total = $this->admin_model->get_total($input);
+        $this->data['total'] = $total;
+        $this->data['temp'] = 'admin/admin/index';
+        $this->load->view('admin/main', $this->data);
+    }
+
+    function add()
+    {
+        $this->data['temp'] = 'admin/admin/add';
+        $this->load->view('admin/main', $this->data);
     }
 }

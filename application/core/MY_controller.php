@@ -18,6 +18,7 @@ class MY_controller extends CI_Controller
         {
             case 'admin':
             {
+                $this->load->helper('admin');
                 $this->_check_login();
                 break;
             }
