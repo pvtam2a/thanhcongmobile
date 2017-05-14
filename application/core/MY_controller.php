@@ -33,6 +33,17 @@ class MY_controller extends CI_Controller
      */
     private function _check_login()
     {
+        $controller = $this->uri->rsegment(1);
+        $controller = strtolower($controller);
 
+        $login = $this->session->userdata('login');
+        //nếu chưa đăng nhập và truy cập vào controller khác login
+        if (!$login && $controller != 'login') {
+            redirect(admin_url('login'));
+        }
+        //nếu đã đăng nhập thì không cho vào trang login nữa
+        if ($login && $controller == 'login') {
+            redirect(admin_url('home'));
+        }
     }
 }
