@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo public_url('bs')?> /css/bootstrap.min.css">
     <script src="<?php echo public_url('bs')?> /jquery/jquery.min.js"></script>
     <script src="<?php echo public_url('bs')?> /js/bootstrap.min.js"></script>
+    <script src="<?php echo public_url('bs')?> /js/common.js"></script>
 </head>
 <body>
 
@@ -70,6 +71,12 @@
 </div>
 <h2>Ky thuat AJAX</h2>
 <p id="demo"></p>
+<div id="result">
+    Nội dung ajax sẽ được load ở đây
+</div>
+<p>
+    <button id="btn_1" type="button" onclick="load_ajax()" class="btn btn-success">Load Ajax</button>
+</p>
 <p>
     <button id="btn1" type="button" onclick="loadDoc()" class="btn btn-success">Tao Request toi Server</button>
     <button id="btn2" type="button" onclick="hideButton(3)" class="btn btn-primary">Primary</button>
@@ -94,53 +101,5 @@
     <strong>Success!</strong> Indicates a successful or positive action.
 </div>
 <button id="btn6" type="button" class="btn btn-primary active">Active Primary</button>
-<script>  
-    function showAllButton() {
-        $('button').show(1000);
-    }
-    function hideButton(id) {
-        if(!id)
-            alert('error!');
-        else
-        {
-            switch (id) {
-                case 2:
-                    $('#btn2').hide(1000);
-                    break;
-                case 3:
-                    $('#btn3').hide(1000);
-                    break;
-            }
-        }
-    }
-    $('a.clsmessage').click(function () {
-        $('div.alert-success').show(1000);
-    })
-    function loadDoc() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                document.getElementById("demo").innerHTML = xhttp.responseText;
-            }
-        };
-        xhttp.open("GET", "demo_get.asp", true);
-        xhttp.send();
-    }
-    function close_OpenForm() {
-//        var display = $('#div_login').css('display');
-//        if(display == 'block')
-//            $('#div_login').hide(1000);
-//        else  $('#div_login').show();
-        $('#div_login').toggle(1000);
-    }
-    $(document).ready(function () {
-        var element = $('.subject_box p i');
-        $.each(element, function(index, val) {
-            if(val.innerText=='ə')
-                $(element[index]).css( "font-family", "initial" );
-        });
-    });
-</script>
-
 </body>
 </html>

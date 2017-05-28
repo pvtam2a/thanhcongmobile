@@ -13,4 +13,10 @@ class Home extends CI_Controller
         $data['temp'] = 'site/home/index';
         $this->load->view('test/ajax', $data);
     }
+
+    function ajax()
+    {
+        $data = array();
+        $this->load->view('test/ajax_practice', $data);
+    }
 }
