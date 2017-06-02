@@ -71,11 +71,14 @@
 </div>
 <h2>Ky thuat AJAX</h2>
 <p id="demo"></p>
+<div id="div-ajax-center" style="text-align: "></div>
 <div id="result">
-    Nội dung ajax sẽ được load ở đây
+    <h1>Nội dung ajax sẽ được load ở đây</h1>
 </div>
 <p>
-    <button id="btn_1" type="button" onclick="load_ajax()" class="btn btn-success">Load Ajax</button>
+    <button id="btn_1" type="button" onclick="load_ajax('text')" class="btn btn-success">Load Ajax TEXT</button>
+    <button id="btn_1" type="button" onclick="load_ajax('json')" class="btn btn-success">Load Ajax JSON</button>
+    <button id="btn_1" type="button" onclick="load_ajax('xml')" class="btn btn-success">Load Ajax XML</button>
 </p>
 <p>
     <button id="btn1" type="button" onclick="loadDoc()" class="btn btn-success">Tao Request toi Server</button>

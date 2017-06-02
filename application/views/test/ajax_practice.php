@@ -8,11 +8,6 @@
     <script src="<?php echo public_url('bs')?> /jquery/jquery.min.js"></script>
     <script src="<?php echo public_url('bs')?> /js/bootstrap.min.js"></script>
     <script src="<?php echo public_url('bs')?> /js/common.js"></script>
-    <script language="javascript">
-        function load_ajax(){
-            alert('Clicked');
-        }
-    </script>
 </head>
 <body>
     <div id="result">

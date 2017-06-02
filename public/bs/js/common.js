@@ -1,3 +1,4 @@
+var url = "http://localhost/thanhcongmobile/";
 /**
  * Created by MyPC on 5/25/2017.
  */
@@ -37,54 +38,59 @@ function close_OpenForm() {
        //else  $('#div_login').show();
     $('#div_login').toggle(500);
 }
-function load_ajax() {
-    $.ajax({
-        url : "../test/result.php",
-        type : "post",
-        dataType:"text",
-        data : {
-        },
-        success : function (result){
-            $('#result').html(result);
-        }
-    });
-}
-function load_ajax_oldversion(){
-    // Tạo một biến lưu trữ đối tượng XML HTTP. Đối tượng này
-    // tùy thuộc vào trình duyệt browser ta sử dụng nên phải kiểm
-    // tra như bước bên dưới
-    var xmlhttp;
+function load_ajax(options) {
+    switch (options) {
+        case 'text':
+            $.ajax({
+                url : url +"test/home/getlistadmintext",
+                type : 'get',
+                dataType : 'text',
+                success : function (result){
+                    $('#result1').html(result);
+                }
+            });
+            break;
+        case 'json':
+            $.ajax({
+                url : url +"test/home/getlistadminjson",
+                type : "get",
+                dataType:"json",
+                data : {
+                },
+                success : function (result){
+                    var html = '';
+                    html += '<table border="1" cellspacing="0" cellpadding="10">';
+                    html += '<tr>';
+                    html += '<td>';
+                    html += 'Username';
+                    html += '</td>';
+                    html += '<td>';
+                    html += 'Name';
+                    html += '</td>';
+                    html += '<tr>';
 
-    // Nếu trình duyệt là  IE7+, Firefox, Chrome, Opera, Safari
-    if (window.XMLHttpRequest)
-    {
-        xmlhttp = new XMLHttpRequest();
+                    // Kết quả là một object json
+                    // Nên ta sẽ loop result
+                    $.each (result, function (key, item){
+                        html +=  '<tr>';
+                        html +=  '<td>';
+                        html +=  item['username'];
+                        html +=  '</td>';
+                        html +=  '<td>';
+                        html +=  item['name'];
+                        html +=  '</td>';
+                        html +=  '<tr>';
+                    });
+
+                    html +=  '</table>';
+                    $('#result').html(html);
+                }
+            });
+            break;
+        case 'xml':
+            alert('ajax xml');
+            break;
     }
-    // Nếu trình duyệt là IE6, IE5
-    else
-    {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    // Khởi tạo một hàm gửi ajax
-    xmlhttp.onreadystatechange = function()
-    {
-        // Nếu đối tượng XML HTTP trả về với hai thông số bên dưới thì mọi chuyện
-        // coi như thành công
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-        {
-            // Sau khi thành công tiến hành thay đổi nội dung của thẻ div, nội dung
-            // ở đây chính là
-            document.getElementById("result").innerHTML = xmlhttp.responseText;
-        }
-    };
-
-    // Khai báo với phương thức GET, và url chính là file result.php
-    xmlhttp.open("GET", "result.php", true);
-
-    // Cuối cùng là Gửi ajax, sau khi gọi hàm send thì function vừa tạo ở
-    // trên (onreadystatechange) sẽ được chạy
-    xmlhttp.send();
 }
 $(document).ready(function () {
     var element = $('.subject_box p i');
