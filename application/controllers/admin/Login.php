@@ -37,4 +37,30 @@ class Login extends MY_controller
         $this->form_validation->set_message(__FUNCTION__, 'Không đăng nhập thành công');
         return false;
     }
+    function check_login_ajax()
+    {
+        $username = isset($_POST['username']) ? $_POST['username'] : false;
+        $password= isset($_POST['password']) ? $_POST['password'] : false;
+        // Nếu cả hai thông tin username và email đều không có thì dừng, thông báo lỗi
+        if (!$username && !$password){
+            die(json_encode('{error:"bad_request"}'));
+        }
+        // Khai báo biến lưu lỗi
+        $error = array(
+            'error' => 'success',
+            'url' => ''
+        );
+        $password = md5($password);
+        $this->load->model('admin_model');
+        $where = array('username' => $username, 'password' => $password);
+        if ($this->admin_model->check_exists($where)) {
+            $this->session->set_userdata('login', true);
+            $error['url'] = admin_url('home');
+        }
+        else{
+            die(json_encode('{error:"bad_request"}'));
+        }
+        // Trả kết quả về cho client
+        die (json_encode($error));
+    }
 }

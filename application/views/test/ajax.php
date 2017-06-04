@@ -19,7 +19,7 @@
 <h2>The Modal Plugin</h2>
 <p>The Modal plugin is a dialog box/popup window that is displayed on top of the current page:</p>
 <button style="margin:7px 15px 17px 0;" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
-    Click To Open Modal
+    Click To Login Admin System
 </button>
 <div class="subject_box w_620" id="top_flag">
     <div class="practice w_609">
@@ -57,10 +57,32 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title">Đăng nhập</h4>
             </div>
+            <div id="showerror"></div>
             <div class="modal-body">
-                <p>Some text in the modal.</p>
+                <div class="widget" id="admin_login" style="height:auto; margin:auto;">
+                    <form class="form" id="form" action="">
+                        <fieldset>
+                            <div class="formRow">
+                                <label for="param_username">Tên đăng nhập:</label>
+                                <div class="loginInput"><input type="text" name="username" id="param_username" /></div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="formRow">
+                                <label for="param_password">Mật khẩu:</label>
+                                <div class="loginInput"><input type="password" name="password" id="param_password" /></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="loginControl">
+                                <input type='hidden' name="submit" value='1'/>
+                                <input id="submitLogin" type="button"  value="Đăng nhập" class="dredB logMeIn" />
+                                <div class="clear"></div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

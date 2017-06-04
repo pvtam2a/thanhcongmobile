@@ -1,4 +1,4 @@
-var url = "http://localhost/thanhcongmobile/";
+var url = "http://localhost:88/thanhcongmobile/";
 /**
  * Created by MyPC on 5/25/2017.
  */
@@ -42,11 +42,11 @@ function load_ajax(options) {
     switch (options) {
         case 'text':
             $.ajax({
-                url : url +"test/home/getlistadmintext",
+                url : url +"test/home/getlistcatalogtext",
                 type : 'get',
                 dataType : 'text',
                 success : function (result){
-                    $('#result1').html(result);
+                    $('#result').html(result);
                 }
             });
             break;
@@ -74,10 +74,10 @@ function load_ajax(options) {
                     $.each (result, function (key, item){
                         html +=  '<tr>';
                         html +=  '<td>';
-                        html +=  item['username'];
+                        html +=  item.username;
                         html +=  '</td>';
                         html +=  '<td>';
-                        html +=  item['name'];
+                        html +=  item.name;
                         html +=  '</td>';
                         html +=  '<tr>';
                     });
@@ -88,7 +88,59 @@ function load_ajax(options) {
             });
             break;
         case 'xml':
-            alert('ajax xml');
+             $.ajax({
+                url : url +"test/home/getnewslistxml",
+                type : "GET",
+                dataType : "xml",
+                success : function (result)
+                {
+                    // HTML lúc đầu
+                    var html = '';
+                    html += '<table border="1" cellspacing="0" cellpadding="10">';
+                    html += '<tr>';
+                    html += '<td>';
+                    html += 'ID';
+                    html += '</td>';
+                    html += '<td>';
+                    html += 'Title';
+                    html += '</td>';
+                    html += '<td>';
+                    html += 'Intro';
+                    html += '</td>';
+                    html += '<td>';
+                    html += 'Content';
+                    html += '</td>';
+                    html += '<td>';
+                    html += 'image_link';
+                    html += '</td>';
+                    html += '<tr>';
+
+                    $(result).find('items').each (function (key, val){
+                        html +=  '<tr>';
+                        html +=  '<td>';
+                        html +=  $(val).find('id').text();
+                        html +=  '</td>';
+                        html +=  '<td>';
+                        html +=  $(val).find('title').text();
+                        html +=  '</td>';
+                        html +=  '<td>';
+                        html +=  $(val).find('intro').text();
+                        html +=  '</td>';
+                        html +=  '<td>';
+                       /* html +=  $(val).find('content').html().toString();*/
+                        html +=  'NULL';
+                        html +=  '</td>';
+                        html +=  '<td>';
+                        html +=  $(val).find('image_link').text();
+                        html +=  '</td>';
+                        html +=  '<tr>';
+                    });
+
+                    html +=  '</table>';
+
+                    $('#result').html(html);
+                }
+            });
             break;
     }
 }
@@ -100,5 +152,57 @@ $(document).ready(function () {
     });
     $('a.clsmessage').click(function () {
         $('div.alert-success').show(500);
-    })
+    });
+    $('#submitLogin').click(function ()
+    {
+        // Xóa trắng thẻ div show lỗi
+        $('#showerror').html('');
+
+        var username = $('#param_username').val();
+        var password = $('#param_password').val();
+
+        // Kiểm tra dữ liệu có null hay không
+        if ($.trim(username) == ''){
+            alert('Bạn chưa nhập tên đăng nhập');
+            return false;
+        }
+
+        if ($.trim(password) == ''){
+            alert('Bạn chưa nhập password');
+            return false;
+        }
+        $.ajax({
+            url : url +"admin/login/check_login_ajax",
+            type : 'post',
+            dataType : 'json',
+            data : {
+                username : username,
+                password : password
+            },
+            success : function (result)
+            {
+                // Kiểm tra xem thông tin gửi lên có bị lỗi hay không
+                // Đây là kết quả trả về từ file Login.php
+                if (!result.hasOwnProperty('error') || result['error'] != 'success')
+                {
+                    $('#showerror').html('Có vẻ như bạn đang hack website của tôi');
+                    return false;
+                }
+                var url = '';
+                // Lấy thông tin url
+                if ($.trim(result['url']) != '' ){
+                    url = result['url'];
+                }
+                if (url != ''){
+                    window.location.href = url;
+                }
+                else {
+                    // Không lấy được url
+                    $('#showerror').append('Xảy ra lỗi khi đăng nhập!');
+                }
+            }
+        });
+
+        return false;
+    });
 });
