@@ -5,7 +5,7 @@
  * Date: 5/5/2017
  * Time: 11:17 PM
  */
-class MY_controller extends CI_Controller
+class MY_Controller extends CI_Controller
 {
     // bien gui du lieu sang ben view
     public $data = array();

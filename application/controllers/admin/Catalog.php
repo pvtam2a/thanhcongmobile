@@ -5,7 +5,7 @@
  * Date: 5/20/2017
  * Time: 12:52 AM
  */
-class  Catalog extends MY_controller
+class  Catalog extends MY_Controller
 {
     function __construct()
     {

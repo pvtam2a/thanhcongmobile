@@ -5,7 +5,7 @@
  * Date: 5/3/2017
  * Time: 11:29 PM
  */
-class Home extends MY_controller
+class Home extends MY_Controller
 {
     function __construct()
     {

@@ -5,7 +5,7 @@
  * Date: 5/7/2017
  * Time: 1:49 AM
  */
-class Admin extends MY_controller
+class Admin extends MY_Controller
 {
     function __construct()
     {
