@@ -31,7 +31,7 @@ class Home extends MY_Controller
     {
         $input = array();
         $list = $this->admin_model->get_list($input);
-        die(json_encode($list));
+        echo json_encode($list);
     }
     function getlistcatalogtext()
     {
@@ -80,5 +80,11 @@ class Home extends MY_Controller
             }
         }
         echo '</root>';
+    }
+    function getlistnewsjson()
+    {
+        $input = array();
+        $list = $this->news_model->get_list($input);
+        echo json_encode($list);
     }
 }

@@ -99,8 +99,9 @@
 </div>
 <p>
     <button id="btn_1" type="button" onclick="load_ajax('text')" class="btn btn-success">Load Ajax TEXT</button>
-    <button id="btn_1" type="button" onclick="load_ajax('json')" class="btn btn-success">Load Ajax JSON</button>
-    <button id="btn_1" type="button" onclick="load_ajax('xml')" class="btn btn-success">Load Ajax XML</button>
+    <button id="btn_2" type="button" onclick="load_ajax('json')" class="btn btn-success">Load Ajax JSON</button>
+    <button id="btn_3" type="button" onclick="load_ajax('xml')" class="btn btn-success">Load Ajax XML</button>
+    <button id="btn_4" type="button" onclick="load_ajax('news_json')" class="btn btn-success">Load NEWS Ajax XML</button>
 </p>
 <p>
     <button id="btn1" type="button" onclick="loadDoc()" class="btn btn-success">Tao Request toi Server</button>

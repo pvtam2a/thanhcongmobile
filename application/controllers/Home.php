@@ -12,5 +12,6 @@ class Home extends CI_Controller
         $data = array();
         $data['temp'] = 'site/home/index';
         $this->load->view('site/layout', $data);
+
     }
 }

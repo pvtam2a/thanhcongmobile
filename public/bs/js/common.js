@@ -50,6 +50,18 @@ function load_ajax(options) {
                 }
             });
             break;
+        case 'news_json':
+            $.ajax({
+                url: url + "test/home/getlistnewsjson",
+                type: "get",
+                dataType: "json",
+                data: {},
+                success: function (result) {
+                    buildNewsJson(result);
+                }
+            });
+
+            break;
         case 'json':
             $.ajax({
                 url : url +"test/home/getlistadminjson",
@@ -206,3 +218,49 @@ $(document).ready(function () {
         return false;
     });
 });
+function  buildNewsJson(result) {
+    var html = '';
+    html += '<table border="1" cellspacing="0" cellpadding="10" width="1000px">';
+    html += '<tr>';
+    html += '<td>';
+    html += 'ID';
+    html += '</td>';
+    html += '<td>';
+    html += 'Title';
+    html += '</td>';
+    html += '<td>';
+    html += 'Intro';
+    html += '</td>';
+    html += '<td>';
+    html += 'Content';
+    html += '</td>';
+    html += '<td>';
+    html += 'Image_Link';
+    html += '</td>';
+    html += '<tr>';
+
+    // Kết quả là một object json
+    // Nên ta sẽ loop result
+    $.each (result, function (key, item){
+        html +=  '<tr>';
+        html +=  '<td>';
+        html +=  item.id;
+        html +=  '</td>';
+        html +=  '<td>';
+        html +=  item.title;
+        html +=  '</td>';
+        html +=  '<td>';
+        html +=  item.intro;
+        html +=  '</td>';
+        html +=  '<td>';
+        html +=  item.content;
+        html +=  '</td>';
+        html +=  '<td>';
+        html +=  item.image_link;
+        html +=  '</td>';
+        html +=  '<tr>';
+    });
+
+    html +=  '</table>';
+    $('#result').html(html);
+}

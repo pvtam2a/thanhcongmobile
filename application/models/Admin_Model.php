@@ -5,7 +5,7 @@
  * Date: 5/7/2017
  * Time: 12:52 AM
  */
-class Admin_model extends MY_Model
+class Admin_Model extends MY_Model
 {
     var $table = 'admin';
 }
