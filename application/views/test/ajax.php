@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php echo public_url('bs')?> /css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo public_url('bs')?> /css/style.css">
     <script src="<?php echo public_url('bs')?> /jquery/jquery.min.js"></script>
     <script src="<?php echo public_url('bs')?> /js/bootstrap.min.js"></script>
     <script src="<?php echo public_url('bs')?> /js/common.js"></script>
@@ -91,6 +92,8 @@
 
     </div>
 </div>
+<h2>Ky thuat CSS3</h2>
+<p class="border-radius">Nội dung của của thẻ p được định dạng border-radius </p>
 <h2>Ky thuat AJAX</h2>
 <p id="demo"></p>
 <div id="div-ajax-center" style="text-align: "></div>
