@@ -10,9 +10,9 @@ class Home extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('admin_model');
-        $this->load->model('catalog_model');
-        $this->load->model('news_model');
+        $this->load->model('Admin_Model');
+        $this->load->model('Catalog_Model');
+        $this->load->model('News_Model');
     }
     function index()
     {
@@ -30,13 +30,13 @@ class Home extends MY_Controller
     function getlistadminjson()
     {
         $input = array();
-        $list = $this->admin_model->get_list($input);
+        $list = $this->Admin_Model->get_list($input);
         echo json_encode($list);
     }
     function getlistcatalogtext()
     {
         $input = array();
-        $list = $this->catalog_model->get_list($input);
+        $list = $this->Catalog_Model->get_list($input);
         //pre($list);
         echo '<table border="1" cellspacing="0" cellpadding="10">';
         echo '<tr>';
@@ -65,7 +65,7 @@ class Home extends MY_Controller
     function getnewslistxml()
     {
         $input = array();
-        $list = $this->news_model->get_list($input);
+        $list = $this->News_Model->get_list($input);
         echo '<?xml version="1.0" encoding="UTF-8"?>';
         echo '<root>';
         if ($list) {
@@ -84,7 +84,7 @@ class Home extends MY_Controller
     function getlistnewsjson()
     {
         $input = array();
-        $list = $this->news_model->get_list($input);
+        $list = $this->News_Model->get_list($input);
         echo json_encode($list);
     }
 }

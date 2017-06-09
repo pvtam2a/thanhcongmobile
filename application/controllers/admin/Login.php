@@ -29,9 +29,9 @@ class Login extends MY_Controller
         $username = $this->input->post('username');
         $password= $this->input->post('password');
         $password = md5($password);
-        $this->load->model('admin_model');
+        $this->load->model('Admin_Model');
         $where = array('username' => $username, 'password' => $password);
-        if ($this->admin_model->check_exists($where)) {
+        if ($this->Admin_Model->check_exists($where)) {
             return true;
         }
         $this->form_validation->set_message(__FUNCTION__, 'Không đăng nhập thành công');
@@ -51,9 +51,9 @@ class Login extends MY_Controller
             'url' => ''
         );
         $password = md5($password);
-        $this->load->model('admin_model');
+        $this->load->model('Admin_Model');
         $where = array('username' => $username, 'password' => $password);
-        if ($this->admin_model->check_exists($where)) {
+        if ($this->Admin_Model->check_exists($where)) {
             $this->session->set_userdata('login', true);
             $error['url'] = admin_url('home');
         }

@@ -10,7 +10,7 @@ class Admin extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('admin_model');
+        $this->load->model('Admin_Model');
     }
     /*
      * lay danh sach admin
@@ -18,9 +18,9 @@ class Admin extends MY_Controller
     function index()
     {
         $input = array();
-        $list = $this->admin_model->get_list($input);
+        $list = $this->Admin_Model->get_list($input);
         $this->data['list'] = $list;
-        $total = $this->admin_model->get_total($input);
+        $total = $this->Admin_Model->get_total($input);
         $this->data['total'] = $total;
 
         //lấy nội dung của biến message
@@ -51,7 +51,7 @@ class Admin extends MY_Controller
                     'username' => $username,
                     'password' => md5($password)
                 );
-                if ($this->admin_model->create($data)) {
+                if ($this->Admin_Model->create($data)) {
                     //tạo ra nội dung thông báo
                     $this->session->set_flashdata('message', 'Thêm mới dữ liệu thành công.');
                 } else {
@@ -75,7 +75,7 @@ class Admin extends MY_Controller
         $this->load->library('form_validation');
         $this->load->helper('form');
         //lấy thông tin của quản trị viên
-        $info = $this->admin_model->get_info($id);
+        $info = $this->Admin_Model->get_info($id);
         if (!$info) {
             $this->session->set_flashdata('message', 'Không tồn tại quản trị viên.');
             redirect(admin_url('admin'));
@@ -103,7 +103,7 @@ class Admin extends MY_Controller
                 if ($password) {
                     $data['password'] = md5($password);
                 }
-                if ($this->admin_model->update($id,$data)) {
+                if ($this->Admin_Model->update($id,$data)) {
                     //tạo ra nội dung thông báo
                     $this->session->set_flashdata('message', 'Cập nhật dữ liệu thành công.');
                 } else {
@@ -126,13 +126,13 @@ class Admin extends MY_Controller
         $id = $this->uri->rsegment(3);
         $id = intval($id);
         //lấy ra thông tin của quản trị viên
-        $info = $this->admin_model->get_info($id);
+        $info = $this->Admin_Model->get_info($id);
         if (!$info) {
             $this->session->set_flashdata('message', 'Không tồn tại quản trị viên.');
             redirect(admin_url('admin'));
         }
         //thực hiện xóa
-        if ($this->admin_model->delete($id)) {
+        if ($this->Admin_Model->delete($id)) {
             $this->session->set_flashdata('message', 'Xóa dữ liệu thành công.');
             redirect(admin_url('admin'));
         } else {
@@ -146,7 +146,7 @@ class Admin extends MY_Controller
         $username = $this->input->post('username');
         $where = array('username' => $username);
         //kiểm tra username đã tồn tại hay chưa
-        if ($this->admin_model->check_exists($where)) {
+        if ($this->Admin_Model->check_exists($where)) {
             //trả về thông báo lỗi
             $this->form_validation->set_message(__FUNCTION__, 'Tài khoản đã tồn tại');
             return false;

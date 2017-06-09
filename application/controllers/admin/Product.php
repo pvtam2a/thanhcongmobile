@@ -10,7 +10,7 @@ class Product extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('product_model');
+        $this->load->model('Product_Model');
     }
     /*
      * hiển thị danh sách sản phẩm
@@ -18,7 +18,7 @@ class Product extends MY_Controller
     function index()
     {
         //lấy tổng tất cả số lượng sản phẩm của website
-        $total_rows = $this->product_model->get_total();
+        $total_rows = $this->Product_Model->get_total();
         $this->data['total_rows'] = $total_rows;
         //load thư viện phân trang
         $this->load->library('pagination');
@@ -40,17 +40,17 @@ class Product extends MY_Controller
         $input['limit'] = array($config['per_page'], $segment);
         // Lấy danh sách sản phẩm
 
-        $list = $this->product_model->get_list($input);
+        $list = $this->Product_Model->get_list($input);
         $this->data['list'] = $list;
 
         //lấy danh sách danh mục sản phẩm
-        $this->load->model('catalog_model');
+        $this->load->model('Catalog_Model');
         $input = array();
         $input['where'] = array('parent_id' => 0);
-        $catalogs = $this->catalog_model->get_list($input);
+        $catalogs = $this->Catalog_Model->get_list($input);
         foreach ($catalogs as $rows) {
             $input['where'] = array('parent_id' => $rows->id);
-            $subs = $this->catalog_model->get_list($input);
+            $subs = $this->Catalog_Model->get_list($input);
             $rows->subs = $subs;
         }
         $this->data['catalogs'] = $catalogs;

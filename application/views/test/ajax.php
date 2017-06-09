@@ -4,11 +4,11 @@
     <title>Thành Công Mobile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo public_url('bs')?> /css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo public_url('bs')?> /css/style.css">
-    <script src="<?php echo public_url('bs')?> /jquery/jquery.min.js"></script>
-    <script src="<?php echo public_url('bs')?> /js/bootstrap.min.js"></script>
-    <script src="<?php echo public_url('bs')?> /js/common.js"></script>
+    <link rel="stylesheet" href="<?php echo public_url('bs')?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo public_url('bs')?>/css/style.css">
+    <script src="<?php echo public_url('bs')?>/jquery/jquery.min.js"></script>
+    <script src="<?php echo public_url('bs')?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo public_url('bs')?>/js/common.js"></script>
 </head>
 <body>
 
@@ -104,7 +104,7 @@
     <button id="btn_1" type="button" onclick="load_ajax('text')" class="btn btn-success">Load Ajax TEXT</button>
     <button id="btn_2" type="button" onclick="load_ajax('json')" class="btn btn-success">Load Ajax JSON</button>
     <button id="btn_3" type="button" onclick="load_ajax('xml')" class="btn btn-success">Load Ajax XML</button>
-    <button id="btn_4" type="button" onclick="load_ajax('news_json')" class="btn btn-success">Load NEWS Ajax XML</button>
+    <button id="btn_4" type="button" onclick="load_ajax('news_json')" class="btn btn-success">Load NEWS Ajax JSON</button>
 </p>
 <p>
     <button id="btn1" type="button" onclick="loadDoc()" class="btn btn-success">Tao Request toi Server</button>
