@@ -5,7 +5,7 @@
     <div class="sideProfile">
         <a href="#" title="" class="profileFace"><img width="40" src="<?php echo public_url('admin') ?>/images/user.png" /></a>
         <span>Xin chào: <strong>admin!</strong></span>
-        <span>Hoàng văn Tuyền</span>
+        <span>Phạm Văn Tâm</span>
         <div class="clear"></div>
     </div>
     <div class="sidebarSep"></div>

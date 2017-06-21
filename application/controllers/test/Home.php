@@ -21,6 +21,10 @@ class Home extends MY_Controller
         $this->load->view('test/ajax', $data);
     }
 
+    function upload()
+    {
+        $this->load->view('test/upload');
+    }
     function ajax()
     {
         $data = array();

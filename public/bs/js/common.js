@@ -1,4 +1,4 @@
-var url = "http://localhost:88/thanhcongmobile/";
+var url = "http://localhost/thanhcongmobile/";
 /**
  * Created by MyPC on 5/25/2017.
  */

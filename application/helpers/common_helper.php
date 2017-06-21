@@ -19,3 +19,8 @@ function pre($list, $exit = true)
         die();
     }
 }
+
+function test_url($url = "")
+{
+    return base_url("test/" . $url);
+}
