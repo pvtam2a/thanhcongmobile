@@ -29,6 +29,10 @@ class  Catalog extends MY_Controller
     /*
      * Thêm mới dữ liệu
      */
+    function getdata()
+    {
+        return $this->Catalog_Model->get_list();
+    }
     function add()
     {
         //load thư viện validation dữ liệu
